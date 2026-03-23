@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tts_tower.checkers &mdash; tts-tower 0.5.3.dev0+gec6455075.d20260323 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/bugfix.css?v=aa86f000" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=018d452f"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="tts_tower.data_containers" href="tts_tower.data_containers.html" />
+    <link rel="prev" title="tts_tower" href="tts_tower.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            tts-tower
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="tts_tower.html">tts_tower</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="tts_tower.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">tts_tower.checkers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.data_containers.html">tts_tower.data_containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.inputs.html">tts_tower.inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.report.html">tts_tower.report</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tts_tower.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">tts-tower</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="tts_tower.html">tts_tower</a></li>
+      <li class="breadcrumb-item active">tts_tower.checkers</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-tts_tower.checkers">
+<span id="tts-tower-checkers"></span><h1>tts_tower.checkers<a class="headerlink" href="#module-tts_tower.checkers" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+<section id="module-tts_tower.checkers.checker_base">
+<span id="tts-tower-checkers-checker-base"></span><h3>tts_tower.checkers.checker_base<a class="headerlink" href="#module-tts_tower.checkers.checker_base" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_tower.checkers.checker_base.CheckerBase">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_tower.checkers.checker_base.</span></span><span class="sig-name descname"><span class="pre">CheckerBase</span></span><a class="headerlink" href="#tts_tower.checkers.checker_base.CheckerBase" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract Base Class for all Tower Checkers.</p>
+<p>This class provides the standard interface for defining flight rule logic.
+It handles the initialization of <code class="docutils literal notranslate"><span class="pre">RuleResults</span></code> objects based on the
+defined <code class="docutils literal notranslate"><span class="pre">FR_IDS</span></code> and manages the execution lifecycle of the check.</p>
+<p>These properties and methods must implement:
+* <code class="docutils literal notranslate"><span class="pre">FR_IDS</span></code>
+* <code class="docutils literal notranslate"><span class="pre">INPUTS</span></code>
+* <code class="docutils literal notranslate"><span class="pre">_impl_init</span></code>
+* <code class="docutils literal notranslate"><span class="pre">_impl_do_rulecheck</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="tts_tower.checkers.checker_base.CheckerBase.FR_IDS">
+<span class="property"><span class="k"><span class="pre">abstract</span></span><span class="w"> </span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">FR_IDS</span></span><a class="headerlink" href="#tts_tower.checkers.checker_base.CheckerBase.FR_IDS" title="Link to this definition"></a></dt>
+<dd><p>List of tuples identifying all of the Rules checked by this checker.</p>
+<p>Each entry should be of the form: (“FOO-1234”, 56789)</p>
+<p>Where:
+* “FOO-1234” is the  Rule ID
+* 56789 is the latest approved revision number</p>
+<p>Note that this is called FR_IDS because it was originally written with 
+Flight Rules in mind, but it is flexible enough to be any kind of rule.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tts_tower.checkers.checker_base.CheckerBase.INPUTS">
+<span class="property"><span class="k"><span class="pre">abstract</span></span><span class="w"> </span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">INPUTS</span></span><a class="headerlink" href="#tts_tower.checkers.checker_base.CheckerBase.INPUTS" title="Link to this definition"></a></dt>
+<dd><p>List of tuples identifying all of the InputClients that this checker accepts.</p>
+<p>Must be in the order the inputs are accepted in __init__.</p>
+<p>Each entry should be of the form: (“input_name”, bool)</p>
+<p>Where:
+* “input_name” is the name of the InputClient previously supplied to the InputManager
+* <cite>True</cite> means the checker <strong>requires</strong> the input
+* <cite>False</cite> means the checker will accept <cite>None</cite> if it’s not available</p>
+<p>Init method sets up the <code class="docutils literal notranslate"><span class="pre">RuleResults</span></code> containers for every Flight Rule ID defined in <code class="docutils literal notranslate"><span class="pre">FR_IDS</span></code>.
+If multiple rules are defined, <code class="docutils literal notranslate"><span class="pre">self.rule</span></code> becomes a dictionary mapping IDs to results.
+If a single rule is defined, <code class="docutils literal notranslate"><span class="pre">self.rule</span></code> is the direct <code class="docutils literal notranslate"><span class="pre">RuleResults</span></code> object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.checkers.checker_base.CheckerBase.check_complete">
+<span class="sig-name descname"><span class="pre">check_complete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.checkers.checker_base.CheckerBase.check_complete" title="Link to this definition"></a></dt>
+<dd><p>Check if the rule check has successfully completed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if checks are complete, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.checkers.checker_base.CheckerBase.do_rulecheck">
+<span class="sig-name descname"><span class="pre">do_rulecheck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.checkers.checker_base.CheckerBase.do_rulecheck" title="Link to this definition"></a></dt>
+<dd><p>Execute the rule checking logic.</p>
+<p>This wrapper ensures that the check is only run once. It delegates the actual
+initialization and checking logic to <code class="docutils literal notranslate"><span class="pre">_impl_init</span></code> and <code class="docutils literal notranslate"><span class="pre">_impl_do_rulecheck</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> – Variable length argument list containing the inputs requested in <code class="docutils literal notranslate"><span class="pre">INPUTS</span></code>.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If the checker has already completed its checks.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.checkers.checker_base.CheckerBase.flag_all_error">
+<span class="sig-name descname"><span class="pre">flag_all_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.checkers.checker_base.CheckerBase.flag_all_error" title="Link to this definition"></a></dt>
+<dd><p>Sets the status of all associated rules to ‘ERROR’ with a provided message.</p>
+<p>This is typically used when required inputs are missing or malformed, preventing
+the actual logic from running.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – The error message to attach to the rule dispositions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.checkers.checker_base.CheckerBase.get_rule">
+<span class="sig-name descname"><span class="pre">get_rule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.checkers.checker_base.CheckerBase.get_rule" title="Link to this definition"></a></dt>
+<dd><p>Retrieve a specific RuleResults object by its Flight Rule ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rule_id</strong> (<em>str</em>) – The unique identifier of the flight rule.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The requested RuleResults object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="tts_tower.html#tts_tower.rule_results.RuleResults" title="tts_tower.rule_results.RuleResults">RuleResults</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the checker does not manage the specified rule ID.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.checkers.checker_base.CheckerBase.yield_rules">
+<span class="sig-name descname"><span class="pre">yield_rules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.checkers.checker_base.CheckerBase.yield_rules" title="Link to this definition"></a></dt>
+<dd><p>Generator yielding all RuleResult objects managed by this checker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Yield<span class="colon">:</span></dt>
+<dd class="field-odd"><p>RuleResults object.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Iterator[<a class="reference internal" href="tts_tower.html#tts_tower.rule_results.RuleResults" title="tts_tower.rule_results.RuleResults">RuleResults</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tts_tower.checkers.checker_manager">
+<span id="tts-tower-checkers-checker-manager"></span><h3>tts_tower.checkers.checker_manager<a class="headerlink" href="#module-tts_tower.checkers.checker_manager" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_tower.checkers.checker_manager.CheckerManager">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_tower.checkers.checker_manager.</span></span><span class="sig-name descname"><span class="pre">CheckerManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checkers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.checkers.checker_manager.CheckerManager" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manager class responsible for instantiating, configuring, and executing a collection of Checkers.</p>
+<p>This class handles the retrieval of required inputs for each checker from the InputManager,
+executes the checks safely (catching exceptions per checker), and aggregates the final results.</p>
+<p>Initializes the manager and instantiates the provided checker classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>checkers</strong> (<em>list</em><em>[</em><em>Type</em><em>[</em><a class="reference internal" href="#tts_tower.checkers.checker_base.CheckerBase" title="tts_tower.checkers.checker_base.CheckerBase"><em>CheckerBase</em></a><em>]</em><em>]</em>) – A list of CheckerBase subclasses to be managed.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.checkers.checker_manager.CheckerManager.do_all_checks">
+<span class="sig-name descname"><span class="pre">do_all_checks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">icm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.checkers.checker_manager.CheckerManager.do_all_checks" title="Link to this definition"></a></dt>
+<dd><p>Executes the rule check logic for all managed checkers.</p>
+<p>For each checker:
+1. Identifies required inputs defined in <code class="docutils literal notranslate"><span class="pre">checker.INPUTS</span></code>.
+2. Retrieves those inputs from the InputManager (<code class="docutils literal notranslate"><span class="pre">icm</span></code>).
+3. Verifies inputs are present and not in a Failed state.
+4. Calls <code class="docutils literal notranslate"><span class="pre">checker.do_rulecheck()</span></code> with the retrieved inputs.
+5. Catches and logs any exceptions causing a checker to fail, ensuring other checkers proceed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>icm</strong> (<a class="reference internal" href="tts_tower.inputs.html#tts_tower.inputs.input_manager.InputManager" title="tts_tower.inputs.input_manager.InputManager"><em>InputManager</em></a>) – The populated InputManager instance containing data for checks.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.checkers.checker_manager.CheckerManager.get_all_rule_results">
+<span class="sig-name descname"><span class="pre">get_all_rule_results</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.checkers.checker_manager.CheckerManager.get_all_rule_results" title="Link to this definition"></a></dt>
+<dd><p>Aggregates the RuleResult objects from all checkers that successfully completed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A flat list of RuleResult objects from all complete checkers.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[<a class="reference internal" href="tts_tower.html#tts_tower.rule_results.RuleResults" title="tts_tower.rule_results.RuleResults">RuleResults</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.checkers.checker_manager.CheckerManager.set_rule_status_enum">
+<span class="sig-name descname"><span class="pre">set_rule_status_enum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_status_enum_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.checkers.checker_manager.CheckerManager.set_rule_status_enum" title="Link to this definition"></a></dt>
+<dd><p>Propagates the specific Rule Status Enum to all managed checkers and their rules.</p>
+<p>This sets the initial status of all rules to <code class="docutils literal notranslate"><span class="pre">PENDING</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rule_status_enum_class</strong> (<em>EnumMeta</em>) – The Enum class defining valid rule statuses (e.g., PASSED, VIOLATING).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_tower.checkers.checker_manager.log_checker_exception">
+<span class="sig-prename descclassname"><span class="pre">tts_tower.checkers.checker_manager.</span></span><span class="sig-name descname"><span class="pre">log_checker_exception</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.checkers.checker_manager.log_checker_exception" title="Link to this definition"></a></dt>
+<dd><p>Helper function to standardize logging for exceptions raised within a Checker.</p>
+<p>Logs a warning with the exception type and arguments, and a condensed traceback.
+Also logs the full traceback to debug.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>classname</strong> (<em>type</em><em> or </em><em>str</em>) – The class object or name of the Checker where the exception occurred.</p></li>
+<li><p><strong>e</strong> (<em>Exception</em>) – The exception instance caught.</p></li>
+<li><p><strong>tb</strong> (<em>str</em>) – A formatted traceback string identifying the location of the error.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-tts_tower.checkers.util">
+<span id="tts-tower-checkers-util"></span><h3>tts_tower.checkers.util<a class="headerlink" href="#module-tts_tower.checkers.util" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_tower.checkers.util.load_checkers">
+<span class="sig-prename descclassname"><span class="pre">tts_tower.checkers.util.</span></span><span class="sig-name descname"><span class="pre">load_checkers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">source_dirs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.checkers.util.load_checkers" title="Link to this definition"></a></dt>
+<dd><p>Dynamically imports and retrieves Checker classes from specified module paths.</p>
+<p>This function iterates through the provided source directory dot-paths, imports
+the corresponding modules, and inspects their members to gather all classes
+that inherit from <code class="docutils literal notranslate"><span class="pre">CheckerBase</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>source_dirs</strong> (<em>str</em>) – Variable length argument list of Python dot-paths to modules (e.g., ‘my_project.checkers’).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of discovered Checker class objects (not instances).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tts_tower.html" class="btn btn-neutral float-left" title="tts_tower" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tts_tower.data_containers.html" class="btn btn-neutral float-right" title="tts_tower.data_containers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 JPL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

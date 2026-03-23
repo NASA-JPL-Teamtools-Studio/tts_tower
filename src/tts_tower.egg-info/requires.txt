@@ -1,0 +1,14 @@
+defusedxml
+docx
+docxtpl
+gitpython
+jinja2
+lxml
+numpy
+openpyxl
+pandas
+plotly
+pytest
+jpl-time<2.0.0,>=1.4.5
+tts-html-utils<5.0.0,>=0.4.0
+tts-utilities<1.0.0,>=0.2.1

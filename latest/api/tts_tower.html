@@ -1,0 +1,1036 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tts_tower &mdash; tts-tower 0.5.3.dev0+gec6455075.d20260323 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/bugfix.css?v=aa86f000" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=018d452f"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="tts_tower.checkers" href="tts_tower.checkers.html" />
+    <link rel="prev" title="tts-tower" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            tts-tower
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">tts_tower</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.checkers.html">tts_tower.checkers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.data_containers.html">tts_tower.data_containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.inputs.html">tts_tower.inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.report.html">tts_tower.report</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-tts_tower.exceptions">tts_tower.exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.exceptions.CheckerStepFailure"><code class="docutils literal notranslate"><span class="pre">CheckerStepFailure</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.exceptions.TowerException"><code class="docutils literal notranslate"><span class="pre">TowerException</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-tts_tower.rule_results">tts_tower.rule_results</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.rule_results.RULE_REVISION_SPECIAL"><code class="docutils literal notranslate"><span class="pre">RULE_REVISION_SPECIAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.rule_results.RuleCmdDisposition"><code class="docutils literal notranslate"><span class="pre">RuleCmdDisposition</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.rule_results.RuleDisposition"><code class="docutils literal notranslate"><span class="pre">RuleDisposition</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.rule_results.RuleFileDisposition"><code class="docutils literal notranslate"><span class="pre">RuleFileDisposition</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.rule_results.RuleResults"><code class="docutils literal notranslate"><span class="pre">RuleResults</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.rule_results.RuleSeqDisposition"><code class="docutils literal notranslate"><span class="pre">RuleSeqDisposition</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.rule_results.consolidate_rule_reports"><code class="docutils literal notranslate"><span class="pre">consolidate_rule_reports()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.rule_results.consolidate_rule_results"><code class="docutils literal notranslate"><span class="pre">consolidate_rule_results()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.rule_results.rules_to_json"><code class="docutils literal notranslate"><span class="pre">rules_to_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.rule_results.rules_to_xml"><code class="docutils literal notranslate"><span class="pre">rules_to_xml()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.rule_results.verify_rule_revisions"><code class="docutils literal notranslate"><span class="pre">verify_rule_revisions()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-tts_tower.split_logging">tts_tower.split_logging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.split_logging.ColorFormatter"><code class="docutils literal notranslate"><span class="pre">ColorFormatter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.split_logging.clear_handlers_by_type"><code class="docutils literal notranslate"><span class="pre">clear_handlers_by_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.split_logging.create_logger"><code class="docutils literal notranslate"><span class="pre">create_logger()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.split_logging.handle_exception"><code class="docutils literal notranslate"><span class="pre">handle_exception()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.split_logging.log_to_file"><code class="docutils literal notranslate"><span class="pre">log_to_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.split_logging.stdout_simple_format"><code class="docutils literal notranslate"><span class="pre">stdout_simple_format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tts-tower-tower">tts_tower.tower</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-tts_tower.util">tts_tower.util</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.util.AccessEnum"><code class="docutils literal notranslate"><span class="pre">AccessEnum</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.util.as_list"><code class="docutils literal notranslate"><span class="pre">as_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.util.reverse_dict_order"><code class="docutils literal notranslate"><span class="pre">reverse_dict_order()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tts_tower.util.reverse_prio_dict_merge"><code class="docutils literal notranslate"><span class="pre">reverse_prio_dict_merge()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">tts-tower</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">tts_tower</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-tts_tower">
+<span id="tts-tower"></span><h1>tts_tower<a class="headerlink" href="#module-tts_tower" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tts_tower.checkers.html">tts_tower.checkers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tts_tower.checkers.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.checkers.html#module-tts_tower.checkers.checker_base">tts_tower.checkers.checker_base</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tts_tower.checkers.html#tts_tower.checkers.checker_base.CheckerBase"><code class="docutils literal notranslate"><span class="pre">CheckerBase</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.checkers.html#module-tts_tower.checkers.checker_manager">tts_tower.checkers.checker_manager</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tts_tower.checkers.html#tts_tower.checkers.checker_manager.CheckerManager"><code class="docutils literal notranslate"><span class="pre">CheckerManager</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tts_tower.checkers.html#tts_tower.checkers.checker_manager.log_checker_exception"><code class="docutils literal notranslate"><span class="pre">log_checker_exception()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.checkers.html#module-tts_tower.checkers.util">tts_tower.checkers.util</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tts_tower.checkers.html#tts_tower.checkers.util.load_checkers"><code class="docutils literal notranslate"><span class="pre">load_checkers()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tts_tower.data_containers.html">tts_tower.data_containers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tts_tower.data_containers.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.data_containers.html#tts-tower-data-containers-rule-results">tts_tower.data_containers.rule_results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.data_containers.html#tts-tower-data-containers-tower-key">tts_tower.data_containers.tower_key</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tts_tower.inputs.html">tts_tower.inputs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tts_tower.inputs.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.inputs.html#module-tts_tower.inputs.input_client">tts_tower.inputs.input_client</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tts_tower.inputs.html#tts_tower.inputs.input_client.FailedClient"><code class="docutils literal notranslate"><span class="pre">FailedClient</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tts_tower.inputs.html#tts_tower.inputs.input_client.IC_STATE"><code class="docutils literal notranslate"><span class="pre">IC_STATE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tts_tower.inputs.html#tts_tower.inputs.input_client.InputClient"><code class="docutils literal notranslate"><span class="pre">InputClient</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.inputs.html#module-tts_tower.inputs.input_manager">tts_tower.inputs.input_manager</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tts_tower.inputs.html#tts_tower.inputs.input_manager.InputManager"><code class="docutils literal notranslate"><span class="pre">InputManager</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tts_tower.inputs.html#tts_tower.inputs.input_manager.input_get"><code class="docutils literal notranslate"><span class="pre">input_get</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tts_tower.inputs.html#tts_tower.inputs.input_manager.log_step_exception"><code class="docutils literal notranslate"><span class="pre">log_step_exception()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.inputs.html#module-tts_tower.inputs.state">tts_tower.inputs.state</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tts_tower.inputs.html#tts_tower.inputs.state.StateClient"><code class="docutils literal notranslate"><span class="pre">StateClient</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tts_tower.report.html">tts_tower.report</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tts_tower.report.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.report.sections.html">tts_tower.report.sections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tts_tower.report.sections.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tts_tower.report.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tts_tower.report.html#tts-tower-report-utilities">tts_tower.report.utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+<section id="module-tts_tower.exceptions">
+<span id="tts-tower-exceptions"></span><h3>tts_tower.exceptions<a class="headerlink" href="#module-tts_tower.exceptions" title="Link to this heading"></a></h3>
+<dl class="py exception">
+<dt class="sig sig-object py" id="tts_tower.exceptions.CheckerStepFailure">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_tower.exceptions.</span></span><span class="sig-name descname"><span class="pre">CheckerStepFailure</span></span><a class="headerlink" href="#tts_tower.exceptions.CheckerStepFailure" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tts_tower.exceptions.TowerException" title="tts_tower.exceptions.TowerException"><code class="xref py py-class docutils literal notranslate"><span class="pre">TowerException</span></code></a></p>
+<p>Exception raised when a specific step within a Checker fails.</p>
+<p>This indicates that a discrete logical step within a checker could not be
+completed, typically due to missing data or calculation errors, without
+necessarily crashing the entire application.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="tts_tower.exceptions.TowerException">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_tower.exceptions.</span></span><span class="sig-name descname"><span class="pre">TowerException</span></span><a class="headerlink" href="#tts_tower.exceptions.TowerException" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Base exception class for all Tower-related errors.</p>
+<p>All custom exceptions in the Tower library should inherit from this class
+to allow for coarse-grained error handling of library-specific issues.</p>
+</dd></dl>
+
+</section>
+<section id="module-tts_tower.rule_results">
+<span id="tts-tower-rule-results"></span><h3>tts_tower.rule_results<a class="headerlink" href="#module-tts_tower.rule_results" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RULE_REVISION_SPECIAL">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_tower.rule_results.</span></span><span class="sig-name descname"><span class="pre">RULE_REVISION_SPECIAL</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RULE_REVISION_SPECIAL" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tts_tower.util.AccessEnum" title="tts_tower.util.AccessEnum"><code class="xref py py-class docutils literal notranslate"><span class="pre">AccessEnum</span></code></a></p>
+<p>Special values for overriding TOWER’s default rule revision behavior
+If a RuleResults has one of these values for its “revision” attribute, special handling (or no handling) is applied</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RULE_REVISION_SPECIAL.IGNORE_REVISION">
+<span class="sig-name descname"><span class="pre">IGNORE_REVISION</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#tts_tower.rule_results.RULE_REVISION_SPECIAL.IGNORE_REVISION" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RULE_REVISION_SPECIAL.USER_RULE">
+<span class="sig-name descname"><span class="pre">USER_RULE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#tts_tower.rule_results.RULE_REVISION_SPECIAL.USER_RULE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleCmdDisposition">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_tower.rule_results.</span></span><span class="sig-name descname"><span class="pre">RuleCmdDisposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rule_status_enum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleCmdDisposition" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tts_tower.rule_results.RuleDisposition" title="tts_tower.rule_results.RuleDisposition"><code class="xref py py-class docutils literal notranslate"><span class="pre">RuleDisposition</span></code></a></p>
+<p>Disposition specific to Command objects. 
+Overrides context retrieval to use <cite>repr_context()</cite> of the command.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleCmdDisposition.DISPO_TYPE">
+<span class="sig-name descname"><span class="pre">DISPO_TYPE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'CMD'</span></span><a class="headerlink" href="#tts_tower.rule_results.RuleCmdDisposition.DISPO_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleCmdDisposition.get_target_context">
+<span class="sig-name descname"><span class="pre">get_target_context</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleCmdDisposition.get_target_context" title="Link to this definition"></a></dt>
+<dd><p>Extracts context from a Command object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The string representation of the command’s context.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleDisposition">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_tower.rule_results.</span></span><span class="sig-name descname"><span class="pre">RuleDisposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rule_status_enum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleDisposition" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Container class for any disposition, with space for a message, status, type flag, and related object.</p>
+<p>This class serves as the atomic unit of feedback for a rule check, capturing
+what happened, the resulting status, and context about the object involved.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>str</em>) – Primary information-containing message for the disposition.</p></li>
+<li><p><strong>rule_status_enum</strong> (<em>EnumType</em>) – The Enum class defining valid rule statuses (e.g., RULE_STATUS).</p></li>
+<li><p><strong>status</strong> (<em>str</em><em> or </em><em>IntEnum</em><em>, </em><em>optional</em>) – Rule status to be applied by this disposition. If None, the disposition is informational only.</p></li>
+<li><p><strong>flag</strong> (<em>int</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – A special identifier used by testing suites to differentiate specific dispositions programmatically.</p></li>
+<li><p><strong>target</strong> (<em>any</em><em>, </em><em>optional</em>) – A target object relevant to this disposition (e.g., a Command, Sequence, or File object).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleDisposition.DISPO_TYPE">
+<span class="sig-name descname"><span class="pre">DISPO_TYPE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GENERIC'</span></span><a class="headerlink" href="#tts_tower.rule_results.RuleDisposition.DISPO_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleDisposition.context">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">context</span></span><a class="headerlink" href="#tts_tower.rule_results.RuleDisposition.context" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the string representation of the target object context, if a target exists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>String context or None.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleDisposition.get_target_context">
+<span class="sig-name descname"><span class="pre">get_target_context</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleDisposition.get_target_context" title="Link to this definition"></a></dt>
+<dd><p>Helper method to extract context string from the target. 
+Intended to be overridden by specific disposition types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>String representation of target.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleDisposition.text">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">text</span></span><a class="headerlink" href="#tts_tower.rule_results.RuleDisposition.text" title="Link to this definition"></a></dt>
+<dd><p>The full text representation of the disposition, combining context (if present) and message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Formatted disposition text.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleFileDisposition">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_tower.rule_results.</span></span><span class="sig-name descname"><span class="pre">RuleFileDisposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rule_status_enum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleFileDisposition" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tts_tower.rule_results.RuleDisposition" title="tts_tower.rule_results.RuleDisposition"><code class="xref py py-class docutils literal notranslate"><span class="pre">RuleDisposition</span></code></a></p>
+<p>Disposition specific to File objects.
+Overrides context retrieval to use the file <cite>onboard_name</cite>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleFileDisposition.DISPO_TYPE">
+<span class="sig-name descname"><span class="pre">DISPO_TYPE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'FILE_LOAD'</span></span><a class="headerlink" href="#tts_tower.rule_results.RuleFileDisposition.DISPO_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleFileDisposition.get_target_context">
+<span class="sig-name descname"><span class="pre">get_target_context</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleFileDisposition.get_target_context" title="Link to this definition"></a></dt>
+<dd><p>Extracts context from a File object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The onboard name of the file.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_tower.rule_results.</span></span><span class="sig-name descname"><span class="pre">RuleResults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">revision</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Primary storage and tracking class for Flight Rules.</p>
+<p>Keeps track of the Status (i.e. PASSED, VIOLATING, etc.) and all dispositions/errors generated while
+checking a particular Flight Rule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rule_id</strong> (<em>str</em>) – Flight rule ID (e.g., “AVS-0002”, “SYS-A-0010”).</p></li>
+<li><p><strong>revision</strong> (<em>int</em><em> or </em><a class="reference internal" href="#tts_tower.rule_results.RULE_REVISION_SPECIAL" title="tts_tower.rule_results.RULE_REVISION_SPECIAL"><em>RULE_REVISION_SPECIAL</em></a>) – FR Source revision number. If this doesn’t match the latest Approved revision for a rule,
+dispositions will be rejected unless individually accepted by the user.
+RULE_REVISION_SPECIAL enumerations provide some special parsing.</p></li>
+<li><p><strong>user_title</strong> (<em>str</em><em>, </em><em>optional</em>) – An optional human-readable title for the rule to override the dictionary default.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.add_cmd_dispo">
+<span class="sig-name descname"><span class="pre">add_cmd_dispo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.add_cmd_dispo" title="Link to this definition"></a></dt>
+<dd><p>Add a disposition, automatically adding context about a specific FSW Command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmd</strong> (<em>Command</em>) – The Command object related to the message.</p></li>
+<li><p><strong>message</strong> (<em>str</em>) – The text content of the disposition.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.add_cmd_status_dispo">
+<span class="sig-name descname"><span class="pre">add_cmd_status_dispo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.add_cmd_status_dispo" title="Link to this definition"></a></dt>
+<dd><p>Add a disposition w/ Cmd context and set the rule Status. Also adds an entry for test checking.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmd</strong> (<em>Command</em>) – The Command object related to the message.</p></li>
+<li><p><strong>status</strong> (<em>str</em><em> or </em><em>Enum</em>) – The status to associate with this disposition.</p></li>
+<li><p><strong>message</strong> (<em>str</em>) – The text content of the disposition.</p></li>
+<li><p><strong>flag</strong> (<em>int</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Optional flag identifier for testing.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.add_dispo">
+<span class="sig-name descname"><span class="pre">add_dispo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.add_dispo" title="Link to this definition"></a></dt>
+<dd><p>Simply adds a generic disposition to this rule’s running list without changing status.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – The text content of the disposition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.add_file_dispo">
+<span class="sig-name descname"><span class="pre">add_file_dispo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_load</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.add_file_dispo" title="Link to this definition"></a></dt>
+<dd><p>Add a disposition, automatically adding context about a specific File Load.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_load</strong> (<em>File</em>) – The File object related to the message.</p></li>
+<li><p><strong>message</strong> (<em>str</em>) – The text content of the disposition.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.add_file_status_dispo">
+<span class="sig-name descname"><span class="pre">add_file_status_dispo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_load</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.add_file_status_dispo" title="Link to this definition"></a></dt>
+<dd><p>Add a disposition w/ File context and set the rule Status. Also adds an entry for test checking.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_load</strong> (<em>File</em>) – The File object related to the message.</p></li>
+<li><p><strong>status</strong> (<em>str</em><em> or </em><em>Enum</em>) – The status to associate with this disposition.</p></li>
+<li><p><strong>message</strong> (<em>str</em>) – The text content of the disposition.</p></li>
+<li><p><strong>flag</strong> (<em>int</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Optional flag identifier for testing.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.add_report">
+<span class="sig-name descname"><span class="pre">add_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">components</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.add_report" title="Link to this definition"></a></dt>
+<dd><p>Attaches report components to this rule result, to be displayed in the generated HTML report.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>report_name</strong> (<em>str</em>) – Name of the report section (e.g., “Execution”).</p></li>
+<li><p><strong>components</strong> (<em>list</em><em> or </em><em>object</em>) – List of (or single) Report Components (e.g., Plot, Table). See <cite>tts-html-utils</cite>.</p></li>
+<li><p><strong>weight</strong> (<em>int</em><em>, </em><em>optional</em>) – Sorting weight for the report tab (lower numbers appear first). Defaults to 0.</p></li>
+<li><p><strong>section_class</strong> (<em>type</em><em>, </em><em>optional</em>) – Custom TowerSection class to use for rendering. <cite>deprecated</cite></p></li>
+<li><p><strong>append</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, appends components to an existing report name instead of warning about duplicates.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.add_seq_dispo">
+<span class="sig-name descname"><span class="pre">add_seq_dispo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.add_seq_dispo" title="Link to this definition"></a></dt>
+<dd><p>Add a disposition, automatically adding context about a specific Sequence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seq</strong> (<em>Sequence</em>) – The Sequence object related to the message.</p></li>
+<li><p><strong>message</strong> (<em>str</em>) – The text content of the disposition.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.add_seq_status_dispo">
+<span class="sig-name descname"><span class="pre">add_seq_status_dispo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.add_seq_status_dispo" title="Link to this definition"></a></dt>
+<dd><p>Add a disposition w/ Seq context and set the rule Status. Also adds an entry for test checking.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seq</strong> (<em>Sequence</em>) – The Sequence object related to the message.</p></li>
+<li><p><strong>status</strong> (<em>str</em><em> or </em><em>Enum</em>) – The status to associate with this disposition.</p></li>
+<li><p><strong>message</strong> (<em>str</em>) – The text content of the disposition.</p></li>
+<li><p><strong>flag</strong> (<em>int</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Optional flag identifier for testing.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.add_status_dispo">
+<span class="sig-name descname"><span class="pre">add_status_dispo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.add_status_dispo" title="Link to this definition"></a></dt>
+<dd><p>Adds a generic disposition and attempts to update the rule status.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>status</strong> (<em>str</em><em> or </em><em>Enum</em>) – The status to associate with this disposition (e.g., ‘PASSED’, ‘VIOLATING’).</p></li>
+<li><p><strong>message</strong> (<em>str</em>) – The text content of the disposition.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.dispositions">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">dispositions</span></span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.dispositions" title="Link to this definition"></a></dt>
+<dd><p>List of all dispositions associated with this rule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of RuleDisposition objects.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[<a class="reference internal" href="#tts_tower.rule_results.RuleDisposition" title="tts_tower.rule_results.RuleDisposition">RuleDisposition</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.get_all_dispos">
+<span class="sig-name descname"><span class="pre">get_all_dispos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.get_all_dispos" title="Link to this definition"></a></dt>
+<dd><p>Returns a shallow copy of all dispositions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Copy of the dispositions list.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[<a class="reference internal" href="#tts_tower.rule_results.RuleDisposition" title="tts_tower.rule_results.RuleDisposition">RuleDisposition</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.get_cmd_dispos">
+<span class="sig-name descname"><span class="pre">get_cmd_dispos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.get_cmd_dispos" title="Link to this definition"></a></dt>
+<dd><p>Returns a list of all Command-type dispositions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of RuleCmdDisposition objects.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[<a class="reference internal" href="#tts_tower.rule_results.RuleCmdDisposition" title="tts_tower.rule_results.RuleCmdDisposition">RuleCmdDisposition</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.get_file_dispos">
+<span class="sig-name descname"><span class="pre">get_file_dispos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.get_file_dispos" title="Link to this definition"></a></dt>
+<dd><p>Returns a list of all File-type dispositions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of RuleFileDisposition objects.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[<a class="reference internal" href="#tts_tower.rule_results.RuleFileDisposition" title="tts_tower.rule_results.RuleFileDisposition">RuleFileDisposition</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.get_reports">
+<span class="sig-name descname"><span class="pre">get_reports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.get_reports" title="Link to this definition"></a></dt>
+<dd><p>Returns the dictionary of attached reports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary mapping report names to component/metadata tuples.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.get_seq_dispos">
+<span class="sig-name descname"><span class="pre">get_seq_dispos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.get_seq_dispos" title="Link to this definition"></a></dt>
+<dd><p>Returns a list of all Sequence-type dispositions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of RuleSeqDisposition objects.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[<a class="reference internal" href="#tts_tower.rule_results.RuleSeqDisposition" title="tts_tower.rule_results.RuleSeqDisposition">RuleSeqDisposition</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.is_pending">
+<span class="sig-name descname"><span class="pre">is_pending</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.is_pending" title="Link to this definition"></a></dt>
+<dd><p>Checks if the rule status is currently PENDING.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if status is PENDING, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other_results</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.merge" title="Link to this definition"></a></dt>
+<dd><p>Merge another RuleResult for the same Flight Rule into this one.
+Picks the “highest” status of the 2, but merges all dispositions into one big list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other_results</strong> (<a class="reference internal" href="#tts_tower.rule_results.RuleResults" title="tts_tower.rule_results.RuleResults"><em>RuleResults</em></a>) – The other RuleResults object to merge into this one.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the Rule IDs or Revisions do not match (and are not ignored).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.set_status">
+<span class="sig-name descname"><span class="pre">set_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_status</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.set_status" title="Link to this definition"></a></dt>
+<dd><p>Set a new status for this rule. If the new status is ‘lower’ priority than an existing status, nothing happens.
+(e.g., ERROR overwrites PASSED, but PASSED does not overwrite ERROR).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>new_status</strong> (<em>RULE_STATUS</em><em> or </em><em>str</em>) – New status to attempt to set the rule to.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the new_status is not a valid Enum or string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.status">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">status</span></span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.status" title="Link to this definition"></a></dt>
+<dd><p>The current aggregate status of the rule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The current status enum member.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Enum member</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleResults.to_fr_source_dict">
+<span class="sig-name descname"><span class="pre">to_fr_source_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleResults.to_fr_source_dict" title="Link to this definition"></a></dt>
+<dd><p>Converts the rule result into a dictionary compatible with the Flight Rule Source schema.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary with keys ‘status’, ‘disposition’, and ‘rule_id’.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleSeqDisposition">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_tower.rule_results.</span></span><span class="sig-name descname"><span class="pre">RuleSeqDisposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rule_status_enum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleSeqDisposition" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tts_tower.rule_results.RuleDisposition" title="tts_tower.rule_results.RuleDisposition"><code class="xref py py-class docutils literal notranslate"><span class="pre">RuleDisposition</span></code></a></p>
+<p>Disposition specific to Sequence objects.
+Overrides context retrieval to use the sequence <cite>name</cite>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleSeqDisposition.DISPO_TYPE">
+<span class="sig-name descname"><span class="pre">DISPO_TYPE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SEQ'</span></span><a class="headerlink" href="#tts_tower.rule_results.RuleSeqDisposition.DISPO_TYPE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.rule_results.RuleSeqDisposition.get_target_context">
+<span class="sig-name descname"><span class="pre">get_target_context</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.RuleSeqDisposition.get_target_context" title="Link to this definition"></a></dt>
+<dd><p>Extracts context from a Sequence object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The name of the sequence.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_tower.rule_results.consolidate_rule_reports">
+<span class="sig-prename descclassname"><span class="pre">tts_tower.rule_results.</span></span><span class="sig-name descname"><span class="pre">consolidate_rule_reports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_rules</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.consolidate_rule_reports" title="Link to this definition"></a></dt>
+<dd><p>Aggregates individual reports attached to RuleResults into TowerSection objects.</p>
+<p>If multiple rules contribute to the same report name (e.g. “Power”), they are
+grouped together into a single Section.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rule_results</strong> (<em>list</em><em>[</em><a class="reference internal" href="#tts_tower.rule_results.RuleResults" title="tts_tower.rule_results.RuleResults"><em>RuleResults</em></a><em>]</em>) – List of RuleResult objects.</p></li>
+<li><p><strong>source_rules</strong> (<em>dict</em>) – The Rule Dictionary containing definitions for the rules.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of TowerSection objects ready for rendering.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="tts_tower.report.sections.html#tts_tower.report.sections.base.TowerSection" title="tts_tower.report.sections.base.TowerSection">TowerSection</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_tower.rule_results.consolidate_rule_results">
+<span class="sig-prename descclassname"><span class="pre">tts_tower.rule_results.</span></span><span class="sig-name descname"><span class="pre">consolidate_rule_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all_rule_results</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.consolidate_rule_results" title="Link to this definition"></a></dt>
+<dd><p>Groups a flat list of RuleResults by ID and consolidates them.</p>
+<p>If multiple results exist for the same Rule ID:
+1. It identifies the highest revision number used.
+2. It filters out any results with older revisions (logging a warning).
+3. It merges all remaining results into a single RuleResults object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>all_rule_results</strong> (<em>list</em><em>[</em><a class="reference internal" href="#tts_tower.rule_results.RuleResults" title="tts_tower.rule_results.RuleResults"><em>RuleResults</em></a><em>]</em>) – List of RuleResults objects from various checkers.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of unique, consolidated RuleResults objects.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#tts_tower.rule_results.RuleResults" title="tts_tower.rule_results.RuleResults">RuleResults</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_tower.rule_results.rules_to_json">
+<span class="sig-prename descclassname"><span class="pre">tts_tower.rule_results.</span></span><span class="sig-name descname"><span class="pre">rules_to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.rules_to_json" title="Link to this definition"></a></dt>
+<dd><p>Serializes rule results to a JSON string and optionally writes to a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rule_results</strong> (<em>list</em><em>[</em><a class="reference internal" href="#tts_tower.rule_results.RuleResults" title="tts_tower.rule_results.RuleResults"><em>RuleResults</em></a><em>]</em>) – List of RuleResult objects.</p></li>
+<li><p><strong>outfile</strong> (<em>str</em><em>, </em><em>optional</em>) – Optional path to write the JSON output. If None, only returns string.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>JSON string representation of the results.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_tower.rule_results.rules_to_xml">
+<span class="sig-prename descclassname"><span class="pre">tts_tower.rule_results.</span></span><span class="sig-name descname"><span class="pre">rules_to_xml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.rules_to_xml" title="Link to this definition"></a></dt>
+<dd><p>Serializes rule results to an XML string and optionally writes to a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rule_results</strong> (<em>list</em><em>[</em><a class="reference internal" href="#tts_tower.rule_results.RuleResults" title="tts_tower.rule_results.RuleResults"><em>RuleResults</em></a><em>]</em>) – List of RuleResult objects.</p></li>
+<li><p><strong>outfile</strong> (<em>str</em><em>, </em><em>optional</em>) – Optional path to write the XML output. If None, only returns string.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pretty-printed XML string representation of the results.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_tower.rule_results.verify_rule_revisions">
+<span class="sig-prename descclassname"><span class="pre">tts_tower.rule_results.</span></span><span class="sig-name descname"><span class="pre">verify_rule_revisions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fr_source_rules</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">revision_passthrough_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.rule_results.verify_rule_revisions" title="Link to this definition"></a></dt>
+<dd><p>Verifies that the revision of the verified rules matches the latest revision in the source dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rule_results</strong> (<em>list</em><em>[</em><a class="reference internal" href="#tts_tower.rule_results.RuleResults" title="tts_tower.rule_results.RuleResults"><em>RuleResults</em></a><em>]</em>) – List of consolidated RuleResults objects.</p></li>
+<li><p><strong>fr_source_rules</strong> (<em>dict</em>) – The Rule Dictionary containing official rule definitions.</p></li>
+<li><p><strong>revision_passthrough_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – List of Rule IDs to ignore version mismatches for. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Three lists: verified_rr (passed), nonmatching_rr (ID not found), bad_version_rr (version mismatch).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[list, list, list]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-tts_tower.split_logging">
+<span id="tts-tower-split-logging"></span><h3>tts_tower.split_logging<a class="headerlink" href="#module-tts_tower.split_logging" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_tower.split_logging.ColorFormatter">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_tower.split_logging.</span></span><span class="sig-name descname"><span class="pre">ColorFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.split_logging.ColorFormatter" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Formatter</span></code></p>
+<p>Custom logging formatter that injects ANSI color codes based on log severity.</p>
+<p>This formatter is primarily intended for console/stdout usage to improve
+readability of logs during development.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_tower.split_logging.ColorFormatter.FORMATS">
+<span class="sig-name descname"><span class="pre">FORMATS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{10:</span> <span class="pre">'\x1b[0m',</span> <span class="pre">20:</span> <span class="pre">'\x1b[0m',</span> <span class="pre">30:</span> <span class="pre">'\x1b[38;5;214m',</span> <span class="pre">40:</span> <span class="pre">'\x1b[38;5;160m',</span> <span class="pre">50:</span> <span class="pre">'\x1b[38;5;160m'}</span></span><a class="headerlink" href="#tts_tower.split_logging.ColorFormatter.FORMATS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.split_logging.ColorFormatter.format">
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.split_logging.ColorFormatter.format" title="Link to this definition"></a></dt>
+<dd><p>Formats the log record, prepending color codes to the level name and 
+line number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>record</strong> (<em>logging.LogRecord</em>) – The log record to format.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The formatted log string.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_tower.split_logging.clear_handlers_by_type">
+<span class="sig-prename descclassname"><span class="pre">tts_tower.split_logging.</span></span><span class="sig-name descname"><span class="pre">clear_handlers_by_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handler_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.split_logging.clear_handlers_by_type" title="Link to this definition"></a></dt>
+<dd><p>Removes all handlers of a specific type from the root logger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handler_type</strong> (<em>Type</em><em>[</em><em>logging.Handler</em><em>]</em>) – The class of handler to remove (e.g., <code class="docutils literal notranslate"><span class="pre">logging.FileHandler</span></code>).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_tower.split_logging.create_logger">
+<span class="sig-prename descclassname"><span class="pre">tts_tower.split_logging.</span></span><span class="sig-name descname"><span class="pre">create_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.split_logging.create_logger" title="Link to this definition"></a></dt>
+<dd><p>Factory function to retrieve a logger instance.</p>
+<p>This is the standard entry point for modules to get their logger. It ensures
+that loggers are correctly associated with the application’s logging hierarchy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – The name of the logger (typically <code class="docutils literal notranslate"><span class="pre">__name__</span></code>).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A logger instance configured for the application.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>logging.Logger</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_tower.split_logging.handle_exception">
+<span class="sig-prename descclassname"><span class="pre">tts_tower.split_logging.</span></span><span class="sig-name descname"><span class="pre">handle_exception</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exc_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exc_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.split_logging.handle_exception" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_tower.split_logging.log_to_file">
+<span class="sig-prename descclassname"><span class="pre">tts_tower.split_logging.</span></span><span class="sig-name descname"><span class="pre">log_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clear_previous_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tmpdir_fallback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.split_logging.log_to_file" title="Link to this definition"></a></dt>
+<dd><p>Configures the logger to output to a specified file.</p>
+<p>This function adds a FileHandler to the root logger. It attempts to write 
+to the requested path, but can fallback to the system temporary directory 
+if the requested path is not writable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logfile</strong> (<em>str</em><em> | </em><em>pathlib.Path</em>) – The desired path for the log file.</p></li>
+<li><p><strong>clear_previous_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, removes existing FileHandlers before adding the new one.</p></li>
+<li><p><strong>tmpdir_fallback</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, falls back to the system temp directory if <code class="docutils literal notranslate"><span class="pre">logfile</span></code> is unwritable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>Exception</strong> – If <code class="docutils literal notranslate"><span class="pre">logfile</span></code> is not a string or Path object.</p></li>
+<li><p><strong>PermissionError</strong> – If the file cannot be written and fallback is disabled.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_tower.split_logging.stdout_simple_format">
+<span class="sig-prename descclassname"><span class="pre">tts_tower.split_logging.</span></span><span class="sig-name descname"><span class="pre">stdout_simple_format</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.split_logging.stdout_simple_format" title="Link to this definition"></a></dt>
+<dd><p>Reconfigures the stdout stream handler to use the simplified formatter.</p>
+<p>This is useful for unit tests or CLI output where timestamps and module paths
+add too much noise.</p>
+</dd></dl>
+
+</section>
+<section id="tts-tower-tower">
+<h3>tts_tower.tower<a class="headerlink" href="#tts-tower-tower" title="Link to this heading"></a></h3>
+</section>
+<section id="module-tts_tower.util">
+<span id="tts-tower-util"></span><h3>tts_tower.util<a class="headerlink" href="#module-tts_tower.util" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_tower.util.AccessEnum">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_tower.util.</span></span><span class="sig-name descname"><span class="pre">AccessEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_class_name</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.util.AccessEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>An enhanced Enum class that provides a flexible lookup method.</p>
+<p>This class adds a <code class="docutils literal notranslate"><span class="pre">get</span></code> method to retrieving enum members by instance, 
+value, or name (string). This is useful when processing inputs that might 
+be the Enum object itself, its database value, or its string representation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_tower.util.AccessEnum.get">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.util.AccessEnum.get" title="Link to this definition"></a></dt>
+<dd><p>Retrieves an enum member by instance, value, or name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>Any</em>) – The key to look up. Can be an instance of the enum, a valid value, or a string name.</p></li>
+<li><p><strong>strict</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, raises a KeyError on failure. If False, returns None (implicit).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The matching Enum member.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#tts_tower.util.AccessEnum" title="tts_tower.util.AccessEnum">AccessEnum</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>KeyError</strong> – If <code class="docutils literal notranslate"><span class="pre">strict</span></code> is True and no matching member is found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_tower.util.as_list">
+<span class="sig-prename descclassname"><span class="pre">tts_tower.util.</span></span><span class="sig-name descname"><span class="pre">as_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.util.as_list" title="Link to this definition"></a></dt>
+<dd><p>Coerces a given input into a list.</p>
+<ul class="simple">
+<li><p>Lists remain lists.</p></li>
+<li><p>Strings and Dicts are wrapped in a single-element list (to prevent character/key iteration).</p></li>
+<li><p>Iterables (other than str/dict) are converted to lists.</p></li>
+<li><p>Scalars are wrapped in a single-element list.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>Any</em>) – The input to coerce.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list containing the input elements.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_tower.util.reverse_dict_order">
+<span class="sig-prename descclassname"><span class="pre">tts_tower.util.</span></span><span class="sig-name descname"><span class="pre">reverse_dict_order</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.util.reverse_dict_order" title="Link to this definition"></a></dt>
+<dd><p>Returns a new dictionary with the keys in reverse insertion order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>d</strong> (<em>dict</em>) – The source dictionary.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new dictionary with keys reversed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_tower.util.reverse_prio_dict_merge">
+<span class="sig-prename descclassname"><span class="pre">tts_tower.util.</span></span><span class="sig-name descname"><span class="pre">reverse_prio_dict_merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_tower.util.reverse_prio_dict_merge" title="Link to this definition"></a></dt>
+<dd><p>Merges two dictionaries while prioritizing the order of keys from the first dictionary.</p>
+<p>This is often used to ensure specific keys appear at the top of a dictionary 
+(e.g., for report ordering) by reversing, merging, and reversing back.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>d1</strong> (<em>dict</em>) – The dictionary whose key order takes priority (usually defaults/header info).</p></li>
+<li><p><strong>d2</strong> (<em>dict</em>) – The dictionary containing additional data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A merged dictionary with <code class="docutils literal notranslate"><span class="pre">d1</span></code> keys appearing first.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="tts-tower" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tts_tower.checkers.html" class="btn btn-neutral float-right" title="tts_tower.checkers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 JPL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
