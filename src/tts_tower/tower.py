@@ -124,7 +124,7 @@ class Tower(ABC):
             for d in rr._dispositions:
                 disposition_row = {
                     'message': d.message,
-                    'status': d.status.name,
+                    'status': d.status.name if hasattr(d.status, 'name') else 'UNKNOWN',
                     'target': d.target,
                     'flag': d.flag
                 }
