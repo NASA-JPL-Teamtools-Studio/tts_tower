@@ -165,13 +165,9 @@ class Tower(ABC):
             if rr['Criticality'] == 'DELETED': rr['Status'] = 'DELETED'
             if rr['Criticality'] == 'I': rr['Status'] = 'INFO_ONLY'
 
-        import pdb; pdb.set_trace()
         rule_results = rule_results.sort(by='Rule ID')
-        import pdb; pdb.set_trace()
-        rule_results = rule_results.sort(lam=lambda x: status_order.get(x['Status'].upper(), -1), reverse=True)
-        import pdb; pdb.set_trace()
-        rule_results = rule_results.sort(lam=lambda x: maturity_order.get(x['Maturity'].upper(), -1), reverse=True)
-        import pdb; pdb.set_trace()
+        rule_results = rule_results.sort(lam=lambda x: status_order.get(x['Status'].upper().replace(' ', '_'), -1), reverse=True)
+        rule_results = rule_results.sort(lam=lambda x: maturity_order.get(x['Maturity'].upper().replace(' ', '_'), -1), reverse=True)
 
 
         #hack to get us over the hump and put DELETED at the end without having to change upstream code
