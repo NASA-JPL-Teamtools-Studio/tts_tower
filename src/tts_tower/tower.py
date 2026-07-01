@@ -1,6 +1,9 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
 import pdb
+from pathlib import Path
+import yaml
+from collections import OrderedDict
 
 from tts_tower.rule_results import RuleResults
 from tts_html_utils.core.compiler import HtmlCompiler
@@ -13,6 +16,8 @@ from tts_tower.inputs.input_client import FailedClient
 from tts_tower.inputs.input_manager import InputManager
 from tts_tower import util
 from tts_tower.checkers.util import load_checkers
+from tts_tower.standalone_reports.util import load_standalone_reports
+from tts_tower.standalone_reports.standalone_report_manager import StandAloneReportManager
 from tts_tower.checkers.checker_manager import CheckerManager
 from tts_tower.rule_results import (
     consolidate_rule_results,
@@ -41,6 +46,7 @@ class Tower(ABC):
     RULE_MATURITY =  None
     RULE_STATUS = None
     RULE_CRITICALITY = None
+    INTERVENTION_NEEDED_STATUS = None
     RUN_INFO_ORDER = []
 
     def __init__(self):
@@ -49,6 +55,8 @@ class Tower(ABC):
         """
         self.input_clients = []
         self.checkers = []
+        self.standalone_reports = []
+        self.rule_result_container = None
 
     def add_input_client(self, name, cls, args, kwargs={}):
         """
@@ -73,10 +81,15 @@ class Tower(ABC):
         :type checker: str
         """
         self.checkers.append(checker)
-        
-    def write_reports(self, html_fname, html_report_name):
+
+    def add_standalone_report(self, standalone_report):
+        self.standalone_reports.append(standalone_report)
+    
+    def finalize_rule_container(self):
         """
         Compiles and writes the HTML summary report to a file.
+
+        Also optionally writes a markdown file with rule results for manual editing.
 
         This method aggregates verified rule results, pending rules, and custom report components
         into a structured HTML document using ``HtmlCompiler``.
@@ -118,7 +131,7 @@ class Tower(ABC):
                 'Title': rr.user_title if rr.user_title is not None else self.rules_role_manual[rr.id].title,
                 'Maturity': self.rules_role_manual[rr.id].maturity if rr.id in self.rules_role_manual else 'NA',
                 'Status': rr._RuleResults__status.name,
-                'Reports': report_links
+                'Reports': report_links,
             }
             disposition_rows_this_rule = []
             for d in rr._dispositions:
@@ -169,11 +182,11 @@ class Tower(ABC):
         rule_results = rule_results.sort(lam=lambda x: status_order.get(x['Status'].upper().replace(' ', '_'), -1))
         rule_results = rule_results.sort(lam=lambda x: maturity_order.get(x['Maturity'].upper().replace(' ', '_'), -1))
 
+        self.rule_result_container = rule_results
+        self.report_components = report_components
+        self.rules_subscribed_to_report = rules_subscribed_to_report
 
-        #hack to get us over the hump and put DELETED at the end without having to change upstream code
-        # not_deleted = rule_results.ne('Maturity', 'DELETED')
-        # deleted = rule_results.eq('Maturity', 'DELETED')
-        # rule_results = not_deleted + deleted
+    def write_reports(self, html_fname, html_report_name, custom_report_pages=None):
         
         criticality_key = TowerKeyContainer()
         maturity_key = TowerKeyContainer()
@@ -183,8 +196,8 @@ class Tower(ABC):
         maturity_key.from_enum(self.RULE_MATURITY, 'Maturity')
         status_key.from_enum(self.RULE_STATUS, 'Status')
         
-        ats_report = HtmlCompiler(html_report_name)
-        ats_report.add_body_component(H1(html_report_name))
+        tower_report = HtmlCompiler(html_report_name)
+        tower_report.add_body_component(H1(html_report_name))
         pane_container = PaneContainer()
 
         keys = Div([
@@ -194,11 +207,11 @@ class Tower(ABC):
             ])
 
         pane_container.add_pane([
-            rule_results.power_table(id='rule-results-table', add_filters='local', add_sorting='local')
+            self.rule_result_container.power_table(id='rule-results-table', add_filters='local', add_sorting='local')
             ], 'Rule Results')
         pane_container.add_pane(keys, 'Rule Result Keys')
-        for report_component_name, report_component in report_components.items():
-            rules_this_report = rule_results.isin('Rule ID', rules_subscribed_to_report[report_component_name])
+        for report_component_name, report_component in self.report_components.items():
+            rules_this_report = self.rule_result_container.isin('Rule ID', self.rules_subscribed_to_report[report_component_name])
             rule_table_this_report = rules_this_report.power_table(f'Rules Contributing to {report_component_name}', id='rule-results-table')
             pane_container.add_pane([rule_table_this_report,# add_filters='local', add_sorting='local'),
                                     report_component], report_component_name)
@@ -206,8 +219,38 @@ class Tower(ABC):
         raw_data = [{'': k, ' ': self.run_info.get(k, 'UNKNOWN')} for k in self.RUN_INFO_ORDER]
         raw_data += [{'': k, ' ': self.run_info.get(k, 'UNKNOWN')} for k in self.run_info.keys() if k not in self.RUN_INFO_ORDER]
         pane_container.add_pane(GenericContainer(raw_data=raw_data).power_table(), 'Run Info')
-        ats_report.add_body_component(pane_container)
-        ats_report.render_to_file(html_fname)
+
+        for stand_alone_report in self.srm.stand_alone_reports:
+            pane_container.add_pane(stand_alone_report.report, stand_alone_report.NAME)
+
+        tower_report.add_body_component(pane_container)
+        tower_report.render_to_file(html_fname)
+
+
+
+    # def build_md_table(såelf):
+
+    #     if write_yaml:
+    #         yaml_output = OrderedDict()
+    #         yaml_output['Pending'] = OrderedDict()
+    #         yaml_output['Autodispositioned'] = OrderedDict()
+    #         for rr in rule_results:
+    #             parent =  'Autodispositioned' if rr['Manual Disposition'] == 'NA' else 'Pending'
+    #             yaml_output[parent][f"{rr['Rule ID']}"] = {}
+    #             yaml_output[parent][f"{rr['Rule ID']}"]['Title'] = rr['Title']
+    #             yaml_output[parent][f"{rr['Rule ID']}"]['Title'] = rr['Title']
+    #             yaml_output[parent][f"{rr['Rule ID']}"]['Status'] = rr['Title']
+    #             yaml_output[parent][f"{rr['Rule ID']}"]['Manual Disposition'] = rr['Manual Disposition']
+
+    #         with open(Path(html_fname).with_suffix('.yml'), 'w') as file:
+    #             # Convert OrderedDict to dict to avoid !!python/object tags in YAML
+    #             # Ordering is preserved since Python 3.7+ dicts maintain insertion order
+    #             def ordered_dict_to_dict(obj):
+    #                 if isinstance(obj, OrderedDict):
+    #                     return {k: ordered_dict_to_dict(v) for k, v in obj.items()}
+    #                 return obj
+                
+    #             yaml.dump(ordered_dict_to_dict(yaml_output), file, default_flow_style=False, sort_keys=False)
 
     @abstractmethod
     def build_rule_metadata(self, dictionary_record):
@@ -280,12 +323,11 @@ class Tower(ABC):
 
         self.run_info = util.reverse_prio_dict_merge(self.run_info, self.icm.get_run_info())
 
+        # Load and execute rule checkers
         self.checkers = load_checkers(*self.checkers)
         logger.info('Running Checks')
         self.cm = CheckerManager(self.checkers)
-        # self.cm.set_maturity_enum(self.RULE_MATURITY)
-        self.cm.set_rule_status_enum(self.RULE_STATUS)
-        # self.cm.set_criticality_enum(self.RULE_CRITICALITY)
+        self.cm.set_rule_status_enum(self.RULE_STATUS) #TO DO: Try remoing this line, I think it's OBE
         self.cm.do_all_checks(self.icm)
 
         rule_dictionary = self.icm.get('rule_dictionary')
@@ -294,3 +336,9 @@ class Tower(ABC):
         self.rules_role_manual = rule_dictionary.rules
 
         self.consolidate_and_verify()
+        self.finalize_rule_container()
+
+        self.standalone_reports = load_standalone_reports(*self.standalone_reports)
+        logger.info('Running Standalone Reports')
+        self.srm = StandAloneReportManager(self.standalone_reports)
+        self.standalone_report_pages = self.srm.generate_standalone_reports(self.icm, self.rule_result_container)

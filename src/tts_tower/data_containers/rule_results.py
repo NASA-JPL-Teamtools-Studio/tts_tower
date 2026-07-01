@@ -151,7 +151,7 @@ class RuleResultItem(DataItem):
         ('Title', str),
         ('Maturity', str),
         ('Status', str),
-        ('Reports', str)
+        ('Reports', str),
         ]
 
     TIME_FORMATS = {}
