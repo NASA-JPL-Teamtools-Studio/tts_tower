@@ -6,6 +6,8 @@ import copy
 import tempfile
 from pathlib import Path
 
+from tts_utilities.logger import register_shared_handler, unregister_shared_handlers_by_type
+
 #================================================
 # :: Terminal Output Constants
 #================================================
@@ -129,7 +131,9 @@ def log_to_file(logfile, clear_previous_files=True, tmpdir_fallback=True):
     :raises Exception: If ``logfile`` is not a string or Path object.
     :raises PermissionError: If the file cannot be written and fallback is disabled.
     """
-    if clear_previous_files is True: clear_handlers_by_type(logging.FileHandler)
+    if clear_previous_files is True:
+        clear_handlers_by_type(logging.FileHandler)
+        unregister_shared_handlers_by_type(logging.FileHandler)
 
     if isinstance(logfile, str):
         logfile = Path(logfile)
@@ -153,11 +157,12 @@ def log_to_file(logfile, clear_previous_files=True, tmpdir_fallback=True):
         raise PermissionError(f"Cannot write to log file destination: {logfile.parent}")
 
     global file_handler
-    file_handler = logging.FileHandler(logfile, mode='w', encoding='utf-8', delay=True)
+    file_handler = logging.FileHandler(logfile, mode='a', encoding='utf-8', delay=True)
 
     file_handler.setFormatter(file_formatter)
     file_handler.setLevel(logging.DEBUG)
     logger.addHandler(file_handler)
+    register_shared_handler(file_handler)
     
     if tmpdir_used:
         logger.warning(f'Original path unwritable. Logging to temporary file: {logfile}')
