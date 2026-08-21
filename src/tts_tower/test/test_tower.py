@@ -2,6 +2,8 @@ import sys
 import unittest
 from unittest.mock import MagicMock, patch, ANY
 
+import pytest
+
 # ==========================================
 # :: Imports
 # ==========================================
@@ -175,6 +177,75 @@ class TestTower(unittest.TestCase):
         mock_html_compiler.assert_called_with('Test Report')
         self.assertEqual(mock_rr_cont_instance.sort.call_count, 3)
         mock_html_instance.render_to_file.assert_called_with('output.html')
+
+    @pytest.mark.unreviewed_ai
+    def test_applicable_rules_defaults_to_matching_everything(self):
+        self.assertTrue(self.tower._rule_is_applicable('RAD-001'))
+        self.assertTrue(self.tower._rule_is_applicable('ANYTHING-AT-ALL'))
+
+    @pytest.mark.unreviewed_ai
+    def test_rule_is_applicable_uses_fullmatch_not_prefix_match(self):
+        self.tower.applicable_rules = ['RAD-001']
+        self.assertTrue(self.tower._rule_is_applicable('RAD-001'))
+        # A rule ID that merely starts with a listed pattern should NOT match --
+        # this is the whole point of using re.fullmatch instead of re.match.
+        self.assertFalse(self.tower._rule_is_applicable('RAD-0011'))
+
+    @pytest.mark.unreviewed_ai
+    def test_rule_is_applicable_supports_family_regex(self):
+        self.tower.applicable_rules = ['RAD-.*']
+        self.assertTrue(self.tower._rule_is_applicable('RAD-001'))
+        self.assertTrue(self.tower._rule_is_applicable('RAD-010'))
+        self.assertFalse(self.tower._rule_is_applicable('GEN-001'))
+
+    @pytest.mark.unreviewed_ai
+    @patch('tts_tower.tower.HtmlCompiler')
+    @patch('tts_tower.tower.RuleResultContainer')
+    @patch('tts_tower.tower.TowerKeyContainer')
+    @patch('tts_tower.tower.GenericContainer')
+    @patch('tts_tower.tower.consolidate_rule_reports')
+    @patch('tts_tower.tower.DispositionContainer')
+    def test_write_reports_applicable_rules_never_overrides_a_real_result(
+        self, mock_dispo_cont, mock_report_consolidate, mock_gen_cont, mock_key_cont, mock_rr_cont, mock_html_compiler
+        ):
+        """
+        `applicable_rules` should only relabel the fallback bucket (rules with zero
+        checker-produced results): uncovered rules inside scope stay `Pending`, uncovered
+        rules outside scope become `NA`, but a rule a checker actually reported on keeps
+        its real status regardless of whether it's inside `applicable_rules`.
+        """
+        covered_rule = MagicMock(id='RULE-COVERED', _reports={}, _dispositions=[])
+        covered_rule._RuleResults__status.name = 'VIOLATING'
+
+        self.tower.verified_rr = [covered_rule]
+        self.tower.nonmatching_rr = []
+        self.tower.bad_version_rr = []
+
+        self.tower.rules_role_manual = {
+            'RULE-COVERED': MagicMock(crit='A', title='Covered', maturity='M'),
+            'RULE-UNCOVERED-IN-SCOPE': MagicMock(crit='B', title='In Scope', maturity='M'),
+            'RULE-UNCOVERED-OUT-OF-SCOPE': MagicMock(crit='C', title='Out Of Scope', maturity='M'),
+            }
+        # Deliberately excludes 'RULE-COVERED' -- proves a real result is never overridden.
+        self.tower.applicable_rules = ['RULE-UNCOVERED-IN-SCOPE']
+
+        self.tower.run_info = {'Time': 'Now'}
+        self.tower.RULE_CRITICALITY = MagicMock()
+        self.tower.RULE_MATURITY = [MagicMock(name='M', sort_order=1)]
+        self.tower.RULE_STATUS = [MagicMock(name='S', sort_order=1)]
+
+        mock_rr_cont_instance = mock_rr_cont.return_value
+        mock_rr_cont_instance.sort.return_value = mock_rr_cont_instance
+        mock_rr_cont_instance.__iter__.return_value = [{'Criticality': 'A', 'Maturity': 'M', 'Status': 'S'}]
+
+        self.tower.write_reports('output.html', 'Test Report')
+
+        raw_data = mock_rr_cont.call_args.kwargs['raw_data']
+        status_by_rule_id = {row['Rule ID']: row['Status'] for row in raw_data}
+
+        self.assertEqual(status_by_rule_id['RULE-COVERED'], 'VIOLATING')
+        self.assertEqual(status_by_rule_id['RULE-UNCOVERED-IN-SCOPE'], 'Pending')
+        self.assertEqual(status_by_rule_id['RULE-UNCOVERED-OUT-OF-SCOPE'], 'NA')
 
 if __name__ == '__main__':
     unittest.main()

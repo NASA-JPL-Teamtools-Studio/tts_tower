@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
+import re
 import pdb
 
 from tts_tower.rule_results import RuleResults
@@ -46,9 +47,18 @@ class Tower(ABC):
     def __init__(self):
         """
         Initializes the Tower instance with empty lists for input clients and checkers.
+
+        ``self.applicable_rules`` defaults to ``['.*']``, meaning every rule in the
+        rule dictionary is considered in scope for this run. Set it to a narrower list
+        of regex patterns (e.g. ``['RAD-.*']``, or an exact list of rule IDs) before
+        calling ``run()`` to mark any rule outside that scope as ``NA`` (instead of
+        ``Pending``) if it never receives a result from any registered checker. This
+        never overrides a rule that a checker *did* produce a real result for -- it
+        only relabels the fallback bucket for rules with zero checker-produced results.
         """
         self.input_clients = []
         self.checkers = []
+        self.applicable_rules = ['.*']
 
     def add_input_client(self, name, cls, args, kwargs={}):
         """
@@ -145,7 +155,7 @@ class Tower(ABC):
                 'Criticality': v.crit,
                 'Title': v.title,
                 'Maturity': v.maturity,
-                'Status': 'Pending',
+                'Status': 'Pending' if self._rule_is_applicable(k) else 'NA',
                 'Reports': 'None'
             }
 
@@ -208,6 +218,20 @@ class Tower(ABC):
         pane_container.add_pane(GenericContainer(raw_data=raw_data).power_table(), 'Run Info')
         ats_report.add_body_component(pane_container)
         ats_report.render_to_file(html_fname)
+
+    def _rule_is_applicable(self, rule_id):
+        """
+        Checks whether ``rule_id`` is in scope for this run per ``self.applicable_rules``.
+
+        Only used by ``write_reports`` to label rules with zero checker-produced results
+        (``Pending`` vs. ``NA``); never consulted for rules a checker actually reported on.
+
+        :param rule_id: The rule ID to check (e.g. ``'RAD-001'``).
+        :type rule_id: str
+        :return: True if ``rule_id`` fullmatches any pattern in ``self.applicable_rules``.
+        :rtype: bool
+        """
+        return any(re.fullmatch(pattern, rule_id) for pattern in self.applicable_rules)
 
     @abstractmethod
     def build_rule_metadata(self, dictionary_record):
