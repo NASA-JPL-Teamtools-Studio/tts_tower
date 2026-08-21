@@ -153,12 +153,27 @@ class InputClient(ABC):
         return self.__state
 
     def _unlock(self):
-        """Mainly for debugging, jams state to UNLOCKED to allow editing of attributes outside of init/populate"""
+        """
+        Jams state to UNLOCKED to allow editing of attributes outside of init/populate.
+
+        Remembers whatever state was active beforehand, so that a following `_lock()`
+        call (with no arguments) restores it rather than assuming `POP_END`. This matters
+        for container-mutating methods like `DataContainer.append()`, which wrap a single
+        mutation in `_unlock()`/`_lock()` and may be called mid-`_impl_init` or
+        mid-`_impl_populate` -- i.e. before the client is actually done initializing or
+        populating.
+        """
+        super().__setattr__('_InputClient__state_before_unlock', self.get_state())
         self.__set_state(IC_STATE.UNLOCKED)
 
-    def _lock(self, previous_state=IC_STATE.POP_END):
-        """Mainly for debugging, jams state to POP_END to allow editing of attributes outside of init/populate"""
-        """Defaults to POP_END, which may or may not be correct, so I put a kwarg in there"""
+    def _lock(self, previous_state=None):
+        """
+        Restores the client to `previous_state`. Defaults to whatever state was active
+        before the most recent `_unlock()` call, falling back to `POP_END` if `_unlock()`
+        was never called.
+        """
+        if previous_state is None:
+            previous_state = getattr(self, '_InputClient__state_before_unlock', IC_STATE.POP_END)
         self.__set_state(previous_state)
 
     def _set_error(self):

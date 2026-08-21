@@ -150,6 +150,55 @@ def test_unlock_lock_utility():
 # :: FailedClient Tests
 # ===============================================
 
+@pytest.mark.unreviewed_ai
+def test_lock_restores_state_active_before_unlock_by_default():
+    """
+    Regression test: `_lock()` called with no arguments should restore whatever state
+    was active before the matching `_unlock()` call, not unconditionally jam to POP_END.
+
+    This matters for methods like `DataContainer.append()`, which wrap a single mutation
+    in `_unlock()`/`_lock()` and may be called mid-`_impl_populate` -- well before the
+    client is actually done populating.
+    """
+    client = MockInputClient()
+    client._unlock()
+    client.mid_populate_attr = 'set while unlocked'
+    client._lock()
+    assert client.get_state() == IC_STATE.INIT_END
+
+@pytest.mark.unreviewed_ai
+def test_lock_falls_back_to_pop_end_without_a_prior_unlock():
+    """`_lock()` with no arguments and no matching `_unlock()` call still defaults to POP_END."""
+    client = MockInputClient.__new__(MockInputClient)
+    client._InputClient__set_state(IC_STATE.INIT_END)
+    client._lock()
+    assert client.get_state() == IC_STATE.POP_END
+
+@pytest.mark.unreviewed_ai
+def test_append_style_unlock_lock_mid_populate_preserves_pop_start():
+    """
+    Regression test mirroring the real bug: a method that calls `self._unlock()` then
+    `self._lock()` (no args) partway through `_impl_populate` must not finalize the
+    client's state early -- subsequent attribute sets in the same `_impl_populate` call
+    must still succeed.
+    """
+    class AppendLikeClient(InputClient):
+        def _impl_init(self, *args, **kwargs):
+            pass
+
+        def _impl_populate(self):
+            self._unlock()
+            self.mid_populate_attr = 'set mid populate, like DataContainer.append() would'
+            self._lock()
+            # If _lock() incorrectly jammed state to POP_END here, this next line would
+            # raise AttributeError even though we're still inside _impl_populate.
+            self.after_append_attr = 'set after the append-like call'
+
+    client = AppendLikeClient()
+    client.populate()
+    assert client.get_state() == IC_STATE.POP_END
+    assert client.after_append_attr == 'set after the append-like call'
+
 def test_failed_client_init():
     """Verifies FailedClient correctly stores error info and ends in ERROR state"""
     exc = RuntimeError("Fatal")
