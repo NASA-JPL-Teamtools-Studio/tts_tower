@@ -44,11 +44,11 @@ Tower and its mission-specific implementations also create strong patterns for h
 ### Reporting
 Another powerful feature of Tower is its reporting interface. The primary reporting interface features a list of all rules in the dicitonary (whether they were checked or not). Results are presented so the most severe violations bubble to the top, and filtering and sorting of the main table is provided out of the box, and each row is clickable to show extended metadata from the rule defintion (customizable on a per-mission implementation) and the results of each discrete disposition that was added to the RuleResult object
 
-When defining a checker code, it is also possible to attach arbitrary HTML code to a rule as a besopoke report. Those show up in the top ribbon of the Tower output and also in line with their rules in the main table. Multiple RuleResult objects can contribute to each report, and contributing rule resultes are rolled up at the top of each.
+When defining a checker code, it is also possible to attach arbitrary HTML code to a rule as a besopoke report. Those show up in the top ribbon of the Tower output and also in line with their rules in the main table. Multiple RuleResult objects can contribute to each report, and contributing rule results are rolled up at the top of each.
 
 ### Projects Currently Supported
 
-* Eurpa Clipper
+* Europa Clipper
 * Mars 2020/Perseverance
 * Mars Science Laboratory/Curiosity
 * Orbiting Carbon Observatory 2 (OCO-2)
